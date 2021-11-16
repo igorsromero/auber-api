@@ -4,7 +4,7 @@ import { UsuariosModule } from './usuarios/usuarios.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost/auber'),
+    MongooseModule.forRoot('mongodb://mongo-container/auber'),
     UsuariosModule,
   ],
 })
