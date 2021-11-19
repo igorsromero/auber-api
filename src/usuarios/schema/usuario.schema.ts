@@ -13,6 +13,9 @@ export class Usuario {
 
   @Prop({ required: true })
   password: string;
+
+  @Prop({ required: true })
+  endereco: string;
 }
 
 export const UsuarioSchema = SchemaFactory.createForClass(Usuario);
