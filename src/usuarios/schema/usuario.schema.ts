@@ -15,7 +15,22 @@ export class Usuario {
   password: string;
 
   @Prop({ required: true })
-  endereco: string;
+  cep: string;
+
+  @Prop({ required: true })
+  logradouro: string;
+  
+  @Prop({ required: true })
+  numero: number;
+
+  @Prop({ required: true })
+  bairro: string;
+
+  @Prop({ required: true })
+  localidade: string;
+  
+  @Prop({ required: true })
+  uf: string;
 }
 
 export const UsuarioSchema = SchemaFactory.createForClass(Usuario);
