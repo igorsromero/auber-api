@@ -23,7 +23,7 @@ export class UsuariosService {
     return await this.usuarioModel.findById(idUsuario).exec();
   }
 
-  async findByEmail(emailUsuario: Usuario): Promise<Usuario> {
+  async findByEmail(emailUsuario: string): Promise<Usuario> {
     return await this.usuarioModel.findOne({ email: ('' + emailUsuario) }).exec();
   }
 
