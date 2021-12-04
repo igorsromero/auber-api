@@ -8,7 +8,7 @@ import { CreateUsuarioDto } from './dto/create-usuario.dto';
 export class UsuariosService {
   constructor(
     @InjectModel(Usuario.name) private usuarioModel: Model<UsuarioDocument>,
-  ) {}
+  ) { }
 
   async create(createUsuarioDto: CreateUsuarioDto): Promise<Usuario> {
     const createdUsuario = new this.usuarioModel(createUsuarioDto);
@@ -21,6 +21,10 @@ export class UsuariosService {
 
   async findOne(idUsuario: Usuario): Promise<Usuario> {
     return await this.usuarioModel.findById(idUsuario).exec();
+  }
+
+  async findByEmail(emailUsuario: Usuario): Promise<Usuario> {
+    return await this.usuarioModel.findOne({ email: ('' + emailUsuario) }).exec();
   }
 
   async update(idUsuario: Usuario, dadosUsuario: Usuario): Promise<Usuario> {

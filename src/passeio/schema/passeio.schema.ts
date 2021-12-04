@@ -12,7 +12,7 @@ export class Passeio {
   porteCachorro: string;
 
   @Prop({ required: true })
-  tempoPasseio: Date;
+  tempoPasseio: number;
 
   @Prop({ required: true })
   donoCachorro: string;

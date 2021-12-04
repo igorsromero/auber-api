@@ -1,7 +1,7 @@
 export interface Passeio {
   nomeCachorro: string;
   porteCachorro: string;
-  tempoPasseio: Date;
+  tempoPasseio: number;
   donoCachorro: string;
   passeador: string;
 }

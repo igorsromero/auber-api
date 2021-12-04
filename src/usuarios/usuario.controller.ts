@@ -10,13 +10,20 @@ import {
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { UsuariosService } from './usuario.service';
 import { Usuario } from './interfaces/usuario.interface';
+import bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 @Controller('usuarios')
 export class UsuariosController {
-  constructor(private usuariosService: UsuariosService) {}
+  constructor(private usuariosService: UsuariosService) { }
 
   @Post()
   async create(@Body() createUsuarioDto: CreateUsuarioDto) {
+    const newPassword = await bcrypt.hash(
+      createUsuarioDto.password,
+      saltRounds,
+    );
+    createUsuarioDto.password = newPassword;
     this.usuariosService.create(createUsuarioDto);
   }
 
@@ -42,4 +49,6 @@ export class UsuariosController {
   async delete(@Param() params) {
     return await this.usuariosService.delete(params.id);
   }
+
+  //para login: bcrypt.compare(senha, usuario.senha)
 }
