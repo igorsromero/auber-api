@@ -10,10 +10,14 @@ import {
 import { CreatePasseioDto } from './dto/create-passeio.dto';
 import { PasseiosService } from './passeio.service';
 import { Passeio } from './interfaces/passeio.interface';
+import { UsuariosService } from 'src/usuarios/usuario.service';
 
 @Controller('passeios')
 export class PasseiosController {
-  constructor(private passeiosService: PasseiosService) {}
+  constructor(
+    private passeiosService: PasseiosService,
+    private usuariosService: UsuariosService
+  ) { }
 
   @Post()
   async create(@Body() createPasseioDto: CreatePasseioDto) {
@@ -22,12 +26,24 @@ export class PasseiosController {
 
   @Get()
   async findAll(): Promise<Passeio[]> {
-    return this.passeiosService.findAll();
+    return this.passeiosService.findAll('all');
+  }
+
+  @Get('/ativos')
+  async findAllAtivos(): Promise<Passeio[]> {
+    return this.passeiosService.findAll('ativos');
   }
 
   @Get(':id')
   async findOne(@Param() params): Promise<Passeio> {
     return await this.passeiosService.findOne(params.id);
+  }
+
+  @Get('/ativos/:idPasseio')
+  async findOwner(@Param() params) {
+    const infoPasseio = await this.passeiosService.findOne(params.idPasseio)
+    const infoDono = await this.usuariosService.findOne(infoPasseio.donoCachorro)
+    return { infoPasseio, infoDono }
   }
 
   @Put(':id')
