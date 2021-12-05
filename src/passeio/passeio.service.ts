@@ -16,8 +16,9 @@ export class PasseiosService {
     return createdPasseio.save();
   }
 
-  async findAll(statusPasseio: string): Promise<Passeio[]> {
+  async findAll(statusPasseio: string, passeador?: any): Promise<Passeio[]> {
     if (statusPasseio === 'ativos') return this.passeioModel.find({ passeador: null }).exec();
+    if (passeador !== null) return this.passeioModel.find({passeador: passeador}).exec();
     return this.passeioModel.find().exec();
   }
 

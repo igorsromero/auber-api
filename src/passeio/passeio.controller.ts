@@ -46,6 +46,12 @@ export class PasseiosController {
     return { infoPasseio, infoDono }
   }
 
+  @Get('/ativos/meus/:id')
+  async findMyWalk(@Param() params) {
+    const infoPasseio = await this.passeiosService.findAll('', params.id)
+    return { infoPasseio }
+  }
+
   @Put(':id')
   async update(
     @Param() params,
