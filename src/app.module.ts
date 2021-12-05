@@ -13,5 +13,4 @@ import { UsuariosModule } from './usuarios/usuarios.module';
     AuthModule,
   ],
 })
-// eslint-disable-next-line prettier/prettier
 export class AppModule { }

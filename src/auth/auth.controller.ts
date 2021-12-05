@@ -8,11 +8,6 @@ import { AuthService } from './auth.service';
 export class AuthController {
     constructor(private authService: AuthService) { }
 
-    // @Get('email/:email')
-    // async findByEmail(@Param() params): Promise<Usuario> {
-    //     return await this.usuariosService.findByEmail(params.email);
-    // }
-    // const comparacao = await bcrypt.compare(usuario.password, usuarioByEmail.password)
     @Post()
     async login(@Body() usuario) {
         const user = await this.authService.validateUser(usuario.email, usuario.password);

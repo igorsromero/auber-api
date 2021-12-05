@@ -50,5 +50,4 @@ export class UsuariosController {
     return await this.usuariosService.delete(params.id);
   }
 
-  //para login: bcrypt.compare(senha, usuario.senha)
 }

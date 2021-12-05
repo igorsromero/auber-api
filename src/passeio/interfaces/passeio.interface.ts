@@ -4,4 +4,5 @@ export interface Passeio {
   tempoPasseio: number;
   donoCachorro: string;
   passeador: string;
+  status: string;
 }

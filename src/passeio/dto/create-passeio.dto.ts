@@ -4,4 +4,5 @@ export class CreatePasseioDto {
   tempoPasseio: number;
   donoCachorro: string;
   passeador: string;
+  status: string;
 }

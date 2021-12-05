@@ -19,6 +19,9 @@ export class Passeio {
 
   @Prop()
   passeador: string;
+
+  @Prop()
+  status: string;
 }
 
 export const PasseioSchema = SchemaFactory.createForClass(Passeio);
