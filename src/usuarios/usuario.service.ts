@@ -19,7 +19,7 @@ export class UsuariosService {
     return this.usuarioModel.find().exec();
   }
 
-  async findOne(idUsuario: Usuario): Promise<Usuario> {
+  async findOne(idUsuario: string): Promise<Usuario> {
     return await this.usuarioModel.findById(idUsuario).exec();
   }
 
@@ -27,7 +27,7 @@ export class UsuariosService {
     return await this.usuarioModel.findOne({ email: ('' + emailUsuario) }).exec();
   }
 
-  async update(idUsuario: Usuario, dadosUsuario: Usuario): Promise<Usuario> {
+  async update(idUsuario: string, dadosUsuario: Usuario): Promise<Usuario> {
     await this.usuarioModel.findByIdAndUpdate(idUsuario, dadosUsuario).exec();
     return this.findOne(idUsuario);
   }
