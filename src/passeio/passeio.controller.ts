@@ -46,10 +46,14 @@ export class PasseiosController {
     return { infoPasseio, infoDono }
   }
 
+  @Get('/ativos/dono/:id')
+  async findLastWalk(@Param() params) {
+    return await this.passeiosService.findLast(params.id)
+  }
+
   @Get('/ativos/meus/:id')
   async findMyWalk(@Param() params) {
-    const infoPasseio = await this.passeiosService.findAll('', params.id)
-    return { infoPasseio }
+    return await this.passeiosService.findAll('meus', params.id);
   }
 
   @Put(':id')

@@ -18,12 +18,16 @@ export class PasseiosService {
 
   async findAll(statusPasseio: string, passeador?: any): Promise<Passeio[]> {
     if (statusPasseio === 'ativos') return this.passeioModel.find({ passeador: null }).exec();
-    if (passeador !== null) return this.passeioModel.find({passeador: passeador}).exec();
+    if (statusPasseio === 'meus' && passeador !== null) return this.passeioModel.find({passeador: passeador}).exec();
     return this.passeioModel.find().exec();
   }
 
   async findOne(idPasseio: Passeio): Promise<Passeio> {
     return await this.passeioModel.findById(idPasseio).exec();
+  }
+
+  async findLast(id: any) {
+    return this.passeioModel.find({donoCachorro: id}).exec();
   }
 
   async update(idPasseio: Passeio, dadosPasseio: Passeio): Promise<Passeio> {
